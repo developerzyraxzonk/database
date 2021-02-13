@@ -1,0 +1,26 @@
+{
+    "name": "xdevpusaka/database",
+    "description": "Query Builder Database",
+    "keywords": [
+        "pusaka",
+        "database"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Richard",
+            "email": "developer@xdevpusaka.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xdevpusaka\\Database\\": "src/"
+        }
+    },
+    "prefer-stable": true
+}
