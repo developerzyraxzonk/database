@@ -65,18 +65,25 @@ class Driver implements DriverInterface {
 
     	// close result
     	if(isset($this->result)) {
-    		if($this->result !== NULL) {
+    		
+    		if(is_bool($this->result)) {
+    		}else if($this->result !== NULL) {
     			$this->result->close();
     			unset($this->result);
     		}
+
     	}
 
     	// close connection
     	if(isset($this->db)) {
-			if($this->db !== NULL) {
-				$this->db->close();
-				unset($this->db);
-			}
+
+    		try {
+				if($this->db !== NULL) {
+					$this->db->close();
+					unset($this->db);
+				}
+			}catch(Exception $e) {}
+
 		}
 
     }
