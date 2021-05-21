@@ -13,6 +13,7 @@ class Driver implements DriverInterface {
 	private $result = NULL;
 	private $config	= [];
 	private $error 	= [];
+    private $debug  = FALSE;
 
 	public function __construct($config) {
 
@@ -25,6 +26,12 @@ class Driver implements DriverInterface {
     public function builder() {
 
     	return new Builder($this);
+
+    }
+
+    public function debug() {
+
+        $this->debug = TRUE;
 
     }
 
@@ -105,6 +112,16 @@ class Driver implements DriverInterface {
     }
     
     public function query($query) {
+
+        if( $this->debug ) {
+            
+            $dir = $this->config['debug'];
+            
+            $dir = rtrim($dir, "/") . '/';
+
+            file_put_contents($dir . '/' . date('YmdHis') . uniqid() . '.sql', $query);
+
+        }
 
     	$this->result = $this->db->query($query, MYSQLI_USE_RESULT);
 

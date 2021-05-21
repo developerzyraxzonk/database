@@ -65,6 +65,10 @@ class Builder implements BuilderInterface {
 
 	}
 
+	public function debug() {
+		$this->driver->debug();
+	}
+
 	/**
 	 * Common => close 
 	 * @return void
